@@ -1,0 +1,31 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Student {
+  id             Int      @id @default(autoincrement())
+  name           String
+  facePhoto      String   // Assuming the photo will be stored as a URL or file path
+  enrollmentNum  String   @unique
+  email          String   @unique
+  school         String
+  branch         String
+  semester       Int
+}
+
+model Organizer {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  school    String
+  department String
+}
+
+
